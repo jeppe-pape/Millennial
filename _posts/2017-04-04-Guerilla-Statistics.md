@@ -5,13 +5,16 @@ author: "Jeppe Pape"
 categories: data science
 tags: [sample]
 image: 2020-03-09.png
+youtubeId: fc_QhHqtcUs
 ---
 # What if the spread of danish Covid19 cases was modeled as a fluid flow? #
 
 
 This simple piece of data analysis combines health data and geographical data with concepts such as gradient flow. It´s aim is to try to visualize the spread of the covid 19 pandemic in Denmark in a new way.
 Source code and technical details can be found on my [GitHub](https://github.com/jeppe-pape/Covid-spread-as-gradient-flow):
-<iframe width="500" height="281" src="https://www.youtube.com/embed/fc_QhHqtcUs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+{% include youtubePlayer.html id=page.youtubeId %}
+
 
 
 
