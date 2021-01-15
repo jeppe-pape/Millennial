@@ -10,7 +10,7 @@ youtubeId: fc_QhHqtcUs
 <body translate='no' >
 <div>
 	<video id='local' width='320px' height='180px' controls>
-		<source src='/assets/vid/covid_vid.mp4'></source>
+		<source src='/assets/vid/Cyklist.mp4'></source>
 	</video>
   <video id='webcam' width='320px' height='180px'></video>
   <video id='output-video' width='320px' height='180px' controls></video>
