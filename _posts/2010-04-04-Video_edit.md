@@ -17,9 +17,12 @@ youtubeId: fc_QhHqtcUs
 </div>
 <button id='record' disabled>Start Recording</button>
 <p id='message'></p>
-  	<script src='https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js'></script>
 
-  <script src='https://unpkg.com/@ffmpeg/ffmpeg@0.9.3/dist/ffmpeg.min.js'></script>
+<script src='https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js'></script>
+
+<script src='https://unpkg.com/@ffmpeg/ffmpeg@0.9.3/dist/ffmpeg.min.js'></script>
+
+
 <script>
 const { createFFmpeg, fetchFile } = FFmpeg;
 const ffmpeg = createFFmpeg({
@@ -60,10 +63,13 @@ const transcode = async webcamData => {
   await ffmpeg.load();
   message.innerHTML = 'Start transcoding';
   ffmpeg.FS('writeFile', name, await fetchFile(webcamData));
-  await ffmpeg.run('-i', name, 'output.mp4');
+  ffmpeg.FS('writeFile', "record_2.mp4", await fetchFile("/assets/vid/Cyklist.mp4"));  
+  //await ffmpeg.run('-i', name, 'output.mp4');
+  await ffmpeg.run( '-fflags', '+discardcorrupt', '-i', "record_2.mp4", 'output.mp4');
+  //await ffmpeg.run( '-y', '-i', 'record_2.webm', '-i', name, ', -filter_complex "[0:v]scale=1920:1080:force_original_aspect_ratio=1,setsar=1:1,pad=1920:1080:(ow-iw)/2:(oh-ih)/2[0v];[0v][1:v:0]concat=n=2:v=1:a=0[outv]" -map "[outv]" output.mp4');
+
   message.innerHTML = 'Complete transcoding';
   const data = ffmpeg.FS('readFile', 'output.mp4');
-
   const video = document.getElementById('output-video');
   video.src = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }));
 };
