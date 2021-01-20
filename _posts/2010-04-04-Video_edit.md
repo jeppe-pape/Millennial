@@ -65,8 +65,8 @@ const transcode = async webcamData => {
   ffmpeg.FS('writeFile', name, await fetchFile(webcamData));
   ffmpeg.FS('writeFile', "record_2.mp4", await fetchFile("/assets/vid/Cyklist.mp4"));  
   //await ffmpeg.run('-i', name, 'output.mp4');
-  await ffmpeg.run( '-fflags', '+discardcorrupt', '-i', "record_2.mp4", 'output.mp4');
-  //await ffmpeg.run( '-y', '-i', 'record_2.webm', '-i', name, ', -filter_complex "[0:v]scale=1920:1080:force_original_aspect_ratio=1,setsar=1:1,pad=1920:1080:(ow-iw)/2:(oh-ih)/2[0v];[0v][1:v:0]concat=n=2:v=1:a=0[outv]" -map "[outv]" output.mp4');
+  //await ffmpeg.run( '-fflags', '+discardcorrupt', '-i', "record_2.mp4", 'output.mp4');
+  await ffmpeg.run( '-y', '-i', 'record_2.mp4', '-i', name, , '-filter_complex', '"[0:v]scale=1920:1080:force_original_aspect_ratio=1,setsar=1:1,pad=1920:1080:(ow-iw)/2:(oh-ih)/2[0v];[0v][1:v:0]concat=n=2:v=1:a=0[outv]"', '-map', '"[outv]"', 'output.mp4');
 
   message.innerHTML = 'Complete transcoding';
   const data = ffmpeg.FS('readFile', 'output.mp4');
