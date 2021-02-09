@@ -33,3 +33,12 @@ Koden kan findes på min GitHub [her](https://github.com/jeppe-pape/BigGAN-laten
 <br/>
 
 {% include youtubePlayer.html id=page.youtubeId3 %}
+
+<iframe src="https://player.vimeo.com/video/509843289?autoplay=1&loop=1&muted=1" width="640" height="640" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+<video width="320" height="240" controls>
+  <source src="assets/stylegan00.mp4" type="video/mp4">
+  <source src="movie.ogg" type="video/ogg">
+Your browser does not support the video tag.
+</video>
+
